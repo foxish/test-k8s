@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app1
+  labels:
+      app: app1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      containers:
+      - name: deploy
+        image: nginx:latest
+        ports:
+        - name: serve
+          containerPort: 80
+#        volumeMounts:
+#        - mountPath: /web
+#          name: www-vol1
+#      volumes:
+#      - name: www-vol1
+#        persistentVolumeClaim:
+#          claimName: www-vol1
