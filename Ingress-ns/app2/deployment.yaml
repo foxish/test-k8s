@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app
+  namespace: app2
+  labels:
+      app: app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: deploy
+        image: httpd:latest
+        ports:
+        - name: serve
+          containerPort: 80
