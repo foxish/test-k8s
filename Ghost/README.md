@@ -1,0 +1,24 @@
+Secure endpoint at which we can hit ghost-blogging platform
+
+- Created GKE cluster.
+- Find prebuilt container in docker registry: https://hub.docker.com/_/ghost/
+- Test container locally to verify applications works.
+- Create a deployment.yaml
+- Push to gke using kubectl
+- Expose an service of type LoadBalancer.
+- Public IP works.
+- No persistence for blog posts/logins
+- Create a persistent disk on GCE/storage
+- Add PV and PVC to access disk
+- Mount volume as /web
+- Find ghost docker dockerfile
+- https://github.com/docker-library/ghost
+- Change EnvironmentVariable in dockerfile to point to PD mount.
+- Make sure ghost config.js uses persistent (not in memory) database
+- Modify Dockerfile for Ghost to change environment variable pointing to content to the PD mount point.
+- Created docker image, pushed to our repository, modified the deployment.
+- Still not persistent, losing everything in PD.
+- Find the Dockerfile step initializing “VOLUME”.
+- Possibly overwrites existing database (lookup documentation)
+- Comment out step and rebuild image & deploy.
+- Secure endpoint? Time’s up.

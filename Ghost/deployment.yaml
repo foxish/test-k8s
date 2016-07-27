@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ghost
+  labels:
+      app: ghost
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: deploy
+        image: docker.io/foxish/ghost:latest
+        ports:
+        - name: serve
+          containerPort: 2368
+        volumeMounts:
+        - mountPath: /web
+          name: ghost-disk
+      volumes:
+      - name: ghost-disk
+        persistentVolumeClaim:
+          claimName: ghost-disk

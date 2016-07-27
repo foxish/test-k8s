@@ -1,0 +1,26 @@
+Find prebuilt container in docker registry
+    Found: https://hub.docker.com/_/ghost/
+
+Test container locally to verify applications works
+    Works!
+
+Create a deployment.yaml file
+
+Push to gke using kubectl
+
+Expose a LB service using yaml file.
+
+Test on GKE (but NO persistence for blog posts/usernames)
+
+Create disk on gke on GCE
+
+Add disk to deployment file as volumeMounts
+VolumentMnt -> PV -> PVC
+Find ghost docker dockerfile
+https://github.com/docker-library/ghost
+Change EnvironmentVariable in dockerfile to point to google storage
+Make sure ghost config.js uses persistent (not in memory) database
+Remove the VOLUME command from Dockerfile
+Possibly overwrites existing database
+
+
